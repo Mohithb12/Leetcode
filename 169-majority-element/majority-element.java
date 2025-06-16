@@ -1,5 +1,8 @@
 class Solution {
     public int majorityElement(int[] nums) {
+
+        // Brute force
+
     //         int flag = 0;
     // for (int i = 0; i < nums.length - 1; i++) {
     //   for (int j = 0; j < nums.length - i - 1; j++) {
@@ -20,25 +23,46 @@ class Solution {
     //     return nums[nums.length/2];
 
 
-    HashMap<Integer,Integer> hash = new HashMap<>();
+        //Beter
 
-    for(int i=0;i<nums.length;i++)
+    // HashMap<Integer,Integer> hash = new HashMap<>();
+
+    // for(int i=0;i<nums.length;i++)
+    // {
+    //     if(hash.containsKey(nums[i]))
+    //     {   
+    //         int value = hash.get(nums[i]);
+    //         hash.put(nums[i],value +1);
+    //     }
+    //     else
+    //         hash.put(nums[i],1);
+    // }
+
+    // for(Map.Entry<Integer,Integer> it : hash.entrySet())
+    // {
+    //     if(it.getValue()> nums.length/2)
+    //         return it.getKey();
+    // }
+    // return -1;
+
+        //Optimal
+
+    int elem=nums[0],count=1;
+
+    for(int i=1;i<nums.length;i++)
     {
-        if(hash.containsKey(nums[i]))
-        {   
-            int value = hash.get(nums[i]);
-            hash.put(nums[i],value +1);
+        if(count == 0)
+        {   count = 1;
+            elem = nums[i];
         }
-        else
-            hash.put(nums[i],1);
+        else if(elem == nums[i])
+            ++ count;
+        else if(elem != nums[i])
+            -- count;
     }
 
-    for(Map.Entry<Integer,Integer> it : hash.entrySet())
-    {
-        if(it.getValue()> nums.length/2)
-            return it.getKey();
-    }
-    return -1;
+    return elem;
+     
 
     }
 }
