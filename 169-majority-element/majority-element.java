@@ -47,9 +47,9 @@ class Solution {
 
         //Optimal
 
-    int elem=nums[0],count=1;
+    int elem=0,count=0;
 
-    for(int i=1;i<nums.length;i++)
+    for(int i=0;i<nums.length;i++)
     {
         if(count == 0)
         {   count = 1;
