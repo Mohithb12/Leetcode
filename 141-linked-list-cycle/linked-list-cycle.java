@@ -14,16 +14,16 @@ public class Solution {
         if( head == null)
             return false;
         
-        HashMap<ListNode,Integer> count = new HashMap<>();
+        HashSet<ListNode> count = new HashSet<>();
 
         while(head != null)
         {
-            if(count.containsKey(head) )
+            if(count.contains(head) )
                 return true;
             
             else
             {
-                count.put(head,1);
+                count.add(head);
                 head = head.next;
             }
         }
