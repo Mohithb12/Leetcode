@@ -43,16 +43,14 @@ class Solution {
             if(nums[i] < nums[i+1])
             {
                 index = i;
-                System.out.print(index);
                 break;
             }
         }
 
         if(index == -1)
-        {
             reverse(nums,0,n-1);
-            return;
-        }
+
+        else{
 
         for(int i=n-1;i>index;i--)
         {
@@ -64,10 +62,8 @@ class Solution {
                 break;
             }
         }
-
-        reverse(nums,index+1,n-1);
-        
-
+            reverse(nums,index+1,n-1);
+        }
 
     }
 
