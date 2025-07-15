@@ -65,7 +65,7 @@ class Solution {
         {
             for(int n=0;n<col;n++)
             {
-                if(zero_row[m] == 1 || zero_col[n]==1)
+                if(zero_row[m] == 1 || zero_col[n]==1 && matrix[m][n]!=0 )
                 {
                     matrix[m][n] = 0;
                 }
