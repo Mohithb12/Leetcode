@@ -1,28 +1,57 @@
 class Solution {
-    
-    static int maxRob(int ind,int[] nums,int[] dp)
-    {
-        if(ind == 0) return nums[0];
-
-        if(ind == -1) return 0;
-
-        if(dp[ind] != -1) return dp[ind];
-
-        int pick = maxRob(ind -2,nums,dp) + nums[ind];
-
-        int notpick = maxRob(ind -1 , nums,dp);
-
-        return dp[ind] = Math.max(pick , notpick);
-
-    }
-    
     public int rob(int[] nums) {
-         int n = nums.length;
-         int[] dp = new int[n]; 
 
-         Arrays.fill(dp,-1);
+        int prev,prev2;
 
-         return maxRob(n-1,nums,dp);
+        prev2 = 0;
 
+        prev = nums[0];
+
+        for(int i=1;i<nums.length;i++)
+        {
+            
+            int take = nums[i] ;
+            if(i > 1)
+            take += prev2;
+
+            int nottake = prev ; 
+
+            int cur = Math.max(take,nottake);
+
+            prev2 = prev ;
+            prev = cur;
+        }
+
+        return prev;
+
+        
     }
+
+    // Memoization
+
+    // static int maxRob(int ind,int[] nums,int[] dp)
+    // {
+    //     if(ind == 0) return nums[0];
+
+    //     if(ind == -1) return 0;
+
+    //     if(dp[ind] != -1) return dp[ind];
+
+    //     int pick = maxRob(ind -2,nums,dp) + nums[ind];
+
+    //     int notpick = maxRob(ind -1 , nums,dp);
+
+    //     return dp[ind] = Math.max(pick , notpick);
+
+    // }
+    
+    // public int rob(int[] nums) {
+    //      int n = nums.length;
+    //      int[] dp = new int[n]; 
+
+    //      Arrays.fill(dp,-1);
+
+    //      return maxRob(n-1,nums,dp);
+
+    // }
 }
