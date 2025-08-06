@@ -38,18 +38,19 @@ class Solution {
 
 
 
-    HashMap<Character,Integer> map = new HashMap<>();
-
+    // HashMap<Character,Integer> map = new HashMap<>();
+    int[] map = new int[256];
+    Arrays.fill(map,-1);
     int l=0,r=0;
 
     while(r < n){
         char ch = s.charAt(r);
 
-        if(map.containsKey(ch))
+        if(map[ch] != -1)
         {
-            if(l  <= map.get(ch)){
+            if(l  <= map[ch]){
 
-                l = map.get(ch) + 1;
+                l = map[ch] + 1;
 
                 max_len = Math.max(max_len,r-l+1);
 
@@ -57,7 +58,7 @@ class Solution {
         }
 
         max_len = Math.max(max_len,r-l+1);;
-        map.put(ch,r);
+        map[ch] = r;
 
         r++;
     }
