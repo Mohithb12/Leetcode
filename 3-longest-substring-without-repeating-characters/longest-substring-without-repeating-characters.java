@@ -8,33 +8,63 @@ class Solution {
         int cnt =0 ;
         int n = s.length();
 
-       Set<Character> se = new HashSet<>();
+    //    Set<Character> se = new HashSet<>();
 
-        for(int i=0;i<n;i++)
-        {   se.clear();
+    //     for(int i=0;i<n;i++)
+    //     {   se.clear();
             
-             for(int j= i;j<n;j++)
-            {   char ch = s.charAt(j);
-                if(se.contains(ch))
-                {
+    //          for(int j= i;j<n;j++)
+    //         {   char ch = s.charAt(j);
+    //             if(se.contains(ch))
+    //             {
                    
-                    break;}
+    //                 break;}
 
-                se.add(ch);
+    //             se.add(ch);
 
-                cnt = j - i + 1;
+    //             cnt = j - i + 1;
 
-                // max_len = Math.max(max_len,cnt);
+    //             // max_len = Math.max(max_len,cnt);
 
                 
-            }
+    //         }
 
-            max_len = Math.max(max_len,cnt);
+    //         max_len = Math.max(max_len,cnt);
                 
-            }
+    //         }
 
-            return max_len;
+    //         return max_len;
+    //     }
+
+
+
+    HashMap<Character,Integer> map = new HashMap<>();
+
+    int l=0,r=0;
+
+    while(r < n){
+        char ch = s.charAt(r);
+
+        if(map.containsKey(ch))
+        {
+            if(l  <= map.get(ch)){
+
+                l = map.get(ch) + 1;
+
+                max_len = Math.max(max_len,r-l+1);
+
+            }
         }
 
+        max_len = Math.max(max_len,r-l+1);;
+        map.put(ch,r);
+
+        r++;
+    }
+
+
+    return max_len;
+
+    }
         
     }
