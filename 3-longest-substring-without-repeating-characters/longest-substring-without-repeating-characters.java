@@ -52,7 +52,7 @@ class Solution {
 
                 l = map[ch] + 1;
 
-                max_len = Math.max(max_len,r-l+1);
+                // max_len = Math.max(max_len,r-l+1);
 
             }
         }
