@@ -4,15 +4,15 @@ class Solution {
 
         // We need to find length
         
-        int longest_sub =0;
+        int max_len =0;
         int cnt =0 ;
         int n = s.length();
 
-       
+       Set<Character> se = new HashSet<>();
 
         for(int i=0;i<n;i++)
-        {   
-             Set<Character> se = new HashSet<>();
+        {   se.clear();
+            
              for(int j= i;j<n;j++)
             {   char ch = s.charAt(j);
                 if(se.contains(ch))
@@ -24,16 +24,16 @@ class Solution {
 
                 cnt = j - i + 1;
 
-                longest_sub = Math.max(longest_sub,cnt);
+                max_len = Math.max(max_len,cnt);
 
                 
             }
 
-            longest_sub = Math.max(longest_sub,cnt);
+            max_len = Math.max(max_len,cnt);
                 
             }
 
-            return longest_sub;
+            return max_len;
         }
 
         
