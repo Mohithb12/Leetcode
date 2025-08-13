@@ -8,6 +8,8 @@ class Solution {
             {
                 flag = !flag;
             }
+            if(flag== false)
+                    continue;
             else{
                 if(flag == true)
                 {
