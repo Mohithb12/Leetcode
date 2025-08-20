@@ -1,7 +1,7 @@
 class Solution {
     public int characterReplacement(String s, int k) {
         int[] hash = new int[26];
-        Arrays.fill(hash,0);
+        // Arrays.fill(hash,0);
         int maxf =0;
         int changes = 0;
         int n = s.length();
@@ -32,7 +32,7 @@ class Solution {
             hash[s.charAt(r) - 'A']++;
             maxf =Math.max(maxf, hash[s.charAt(r) - 'A']);
 
-            if(r-l+1 - maxf > k)
+            while(r-l+1 - maxf > k)
             {   
                 hash[s.charAt(l)-'A']--;
                 l++;
