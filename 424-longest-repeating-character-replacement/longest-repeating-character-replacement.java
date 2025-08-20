@@ -32,7 +32,7 @@ class Solution {
             hash[s.charAt(r) - 'A']++;
             maxf =Math.max(maxf, hash[s.charAt(r) - 'A']);
 
-            while(r-l+1 - maxf > k)
+            if(r-l+1 - maxf > k)
             {   
                 hash[s.charAt(l)-'A']--;
                 l++;
