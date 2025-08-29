@@ -1,36 +1,54 @@
 class Solution {
-    public int coinChange(int[] coins, int amount) {
-        int[][] dp =new int[coins.length][amount+1];
+    // public int coinChange(int[] coins, int amount) {
+    //     int[][] dp =new int[coins.length][amount+1];
 
-        for(int[] rows:dp)
-        {
-            Arrays.fill(rows,-1);
+    //     for(int[] rows:dp)
+    //     {
+    //         Arrays.fill(rows,-1);
+    //     }
+
+    //     int res=fewest(coins,coins.length -1,amount,dp);
+    //     return res >= (int)1e9 ? -1 : res;
+
+    // }
+
+      public  static int coinChange(int[] arr, int T) {
+        int n = arr.length;
+
+        // Create a 2D array to store results of subproblems
+        int dp[][] = new int[n][T + 1];
+
+        // Initialize the dp array for the first element of the array
+        for (int i = 0; i <= T; i++) {
+            if (i % arr[0] == 0)
+                dp[0][i] = i / arr[0];
+            else
+                dp[0][i] = (int) Math.pow(10, 9);
         }
 
-        int res=fewest(coins,coins.length -1,amount,dp);
-        return res >= (int)1e9 ? -1 : res;
+        // Fill the dp array using dynamic programming
+        for (int ind = 1; ind < n; ind++) {
+            for (int target = 0; target <= T; target++) {
+                int notTake = 0 + dp[ind - 1][target];
+                int take = (int) Math.pow(10, 9);
 
-    }
+                // If the current element is less than or equal to the target, calculate 'take'
+                if (arr[ind] <= target)
+                    take = 1 + dp[ind][target - arr[ind]];
 
-    static int fewest(int[] coins,int ind,int amount,int[][] dp)
-    {
-        if(ind == 0){
-            if( amount % coins[0] == 0) 
-                return amount/coins[0];
-
-            return (int)1e9;
+                // Store the minimum result in the dp array
+                dp[ind][target] = Math.min(notTake, take);
+            }
         }
 
-        if(dp[ind][amount] != -1) return dp[ind][amount];
+        // Get the minimum number of elements needed for the target sum
+        int ans = dp[n-1][T];
         
-        int take=(int)1e9;
-        if(coins[ind] <= amount)
-            take = 1 + fewest(coins,ind,amount - coins[ind],dp);
 
-        int nottake = fewest(coins,ind-1,amount,dp);
-
-        return dp[ind][amount]=Math.min(take,nottake);
-
-        
-    }
+        // If it's not possible to achieve the target sum, return -1
+        if (ans >= (int) Math.pow(10, 9))
+            return -1;
+        return ans;
+      }
+    
 }
