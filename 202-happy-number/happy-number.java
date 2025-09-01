@@ -3,7 +3,7 @@ class Solution {
         int sqrsm = 0;
         // if(n > 1 && n <10)
         //     return false;
-        int[] hash = new int[100000];
+        int[] hash = new int[10000];
 
         while(sqrsm != 1){
             sqrsm =0;
