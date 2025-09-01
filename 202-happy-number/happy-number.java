@@ -1,8 +1,7 @@
 class Solution {
     public boolean isHappy(int n) {
         int sqrsm = 0;
-        // if(n > 1 && n <10)
-        //     return false;
+        
         int[] hash = new int[1000];
 
         while(sqrsm != 1){
@@ -13,7 +12,7 @@ class Solution {
                 sqrsm += Math.pow(n%10,2);
                 n /= 10;
             }
-            // System.out.println(sqrsm);
+            
             if(hash[sqrsm] == 1)
                 return false;
             else
