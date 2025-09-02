@@ -15,19 +15,7 @@
  */
 class Solution {
     public int maxDepth(TreeNode root) {
-        int cnt =0;
-        cnt = preorder(root);
-        return cnt;
-        
-    }
-
-    static int preorder(TreeNode root)
-    {
-        if (root == null) return 0;
-       
-        
-
-        return 1+ Math.max(preorder(root.left),preorder(root.right)) ;
-
+        if(root==null) return 0;
+        return 1 + Math.max(maxDepth(root.left),maxDepth(root.right));
     }
 }
