@@ -1,6 +1,6 @@
 class Solution {
     public int absDifference(int[] nums, int k) {
-        Arrays.sort(nums);
+        Arrays.parallelSort(nums);
         int max=0,min=0;
         for(int i=0,j=nums.length -1;i < k;i++,j--){
             min += nums[i];
