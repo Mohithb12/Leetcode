@@ -5,10 +5,10 @@ class Solution {
         for(int i=len-1;i>=0;i--){
 
             int num = ((int)( columnTitle.charAt(i) - 'A') );
-            System.out.println(num);
+            // System.out.println(num);
 
             res = res +( (int)Math.pow(26,(len - i-1)) * (num+1));
-            System.out.println(res);
+            // System.out.println(res);
         }
 
         return res;
